@@ -1,0 +1,105 @@
+﻿<Window x:Class="RSADigitalSignature.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RSADigitalSignature"
+        mc:Ignorable="d"
+        Title="MainWindow" d:DesignHeight="900" d:DesignWidth="1400">
+    <Grid Background="DimGray">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Frame Name="ActionFrame" Grid.Row="0" Margin="10" Background="Gray" NavigationUIVisibility="Hidden" 
+               Source="/RSADigitalSignature;component/Pages/GetSignaturePage.xaml" />
+        <Grid Grid.Row="1" Margin="10" Background="LightGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <RadioButton Grid.Column="0" GroupName="Mode" Content="Генерация цифровой подписи" 
+                         RenderTransformOrigin="0.5,0.5" Margin="10" IsChecked="True" 
+                         HorizontalAlignment="Center" VerticalAlignment="Center" Checked="RadioButton_Checked">
+                <RadioButton.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="2" ScaleX="2"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </RadioButton.RenderTransform>
+            </RadioButton>
+            <RadioButton Grid.Column="1" GroupName="Mode" Content="Проверка цифровой подписи" Margin="10"  
+                         HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Checked="RadioButton_Checked_1">
+                <RadioButton.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="2" ScaleX="2"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </RadioButton.RenderTransform>
+            </RadioButton>
+        </Grid>
+        <Grid Grid.Row="2" Background="Gray" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Margin="10" Padding="10" Content="Длина ключа:"
+                   FontFamily="Segoe UI Semibold" FontSize="22"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                   Background="LightGray" Foreground="#FF120023"/>
+            <TextBox Name="KeyLengthField" Grid.Column="1" Margin="0 10 0 10" Padding="10" 
+                     FontFamily="Segoe UI Semibold" FontSize="25"
+                     HorizontalScrollBarVisibility="Auto" Background="#FFF2FCFA" 
+                     BorderBrush="{x:Null}" BorderThickness="0" 
+                     HorizontalContentAlignment="Right" MaxLines="1" MaxLength="4"/>
+            <Button Grid.Column="2" Margin="10" Padding="10" Content="Перегенерировать ключи"
+                    FontFamily="Segoe UI Semibold" FontSize="22"
+                    Background="LightGray" Foreground="#FF120023"
+                    BorderBrush="{x:Null}" BorderThickness="0" Click="Button_Click"/>
+        </Grid>
+        <Grid Grid.Row="3" Background="Gray" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>                
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>                
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Margin="10" Padding="10" Content="r:"
+                    FontFamily="Segoe UI Semibold" FontSize="22"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                    Background="LightGray" Foreground="#FF120023"/>
+            <TextBox Name="RField" Grid.Column="1" Margin="0 10 0 10" Padding="10" 
+                        FontFamily="Segoe UI Semibold" FontSize="25" IsReadOnly="True"
+                        HorizontalScrollBarVisibility="Auto" Background="#FFF2FCFA" 
+                        BorderBrush="{x:Null}" BorderThickness="0" 
+                        HorizontalContentAlignment="Right"/>            
+            <Label Grid.Column="2" Margin="10" Padding="10" Content="e:"
+                    FontFamily="Segoe UI Semibold" FontSize="22"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                    Background="LightGray" Foreground="#FF120023"/>
+            <TextBox Name="EField" Grid.Column="3" Margin="0 10 0 10" Padding="10" 
+                        FontFamily="Segoe UI Semibold" FontSize="25" IsReadOnly="True"
+                        HorizontalScrollBarVisibility="Auto" Background="#FFF2FCFA" 
+                        BorderBrush="{x:Null}" BorderThickness="0" 
+                        HorizontalContentAlignment="Right"/>            
+            <Label Grid.Column="4" Margin="10" Padding="10" Content="d:"
+                    FontFamily="Segoe UI Semibold" FontSize="22"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                    Background="LightGray" Foreground="#FF120023"/>
+            <TextBox Name="DField" Grid.Column="5" Margin="0 10 0 10" Padding="10" 
+                        FontFamily="Segoe UI Semibold" FontSize="25"
+                        HorizontalScrollBarVisibility="Auto" Background="#FFF2FCFA" 
+                        BorderBrush="{x:Null}" BorderThickness="0"  IsReadOnly="True"
+                        HorizontalContentAlignment="Right"/>
+        </Grid>
+    </Grid>
+</Window>
